@@ -155,7 +155,7 @@ void arithmetic(float mas[MAX][MAX], int rows, int cols)
 				sum *= mas[j][i];
 			r = i;
 		}
-		printf("Столбец %d - произведение положительных =  %2.1f\n", r, sum);
+		printf("Столбец %d - произведение положительных =  %2.1f\n", r+1, sum);
 	}
 }
 
