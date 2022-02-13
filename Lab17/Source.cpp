@@ -55,21 +55,21 @@ void fillArrRandomly(float mas[MAX][MAX], int rows, int cols)
 			mas[i][j] = (rand() % 2001 - 1000.0) / 10;
 }
 
-void fillArrFormula(float mas[MAX][MAX], int rows, int cols)							// СТРАННО
+void fillArrFormula(float mas[MAX][MAX], int rows, int cols)							
 {
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
 		{
+			if (i < j)
+				mas[i][j] = cos(i * j);
+			if (i == j)
+				mas[i][j] = log(i);
 			if (i > j)
 				mas[i][j] = sin(i - j);
-			if (i = j)
-				mas[i][j] = log(i);
-			else
-				mas[i][j] = cos(i * j);
 		}
 }
 
-void fillArrFromFile(float mas[MAX][MAX], int& rows, int& cols,const char filename[])			// ВЫЛЕТ
+void fillArrFromFile(float mas[MAX][MAX], int& rows, int& cols,const char filename[])
 {
 	FILE* f;
 	if (fopen_s(&f, filename, "r") != 0)
@@ -80,7 +80,7 @@ void fillArrFromFile(float mas[MAX][MAX], int& rows, int& cols,const char filena
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
-			fscanf_s(f, "%2.1f ", &mas[i][j]);
+			fscanf_s(f, "%f ", &mas[i][j]);
 		fscanf_s(f, "\n");
 	}
 	fclose(f);
@@ -155,7 +155,7 @@ void arithmetic(float mas[MAX][MAX], int rows, int cols)
 				sum *= mas[j][i];
 			r = i;
 		}
-		printf("Столбец %d - произведение положительных =  %2.1f\n", r+1, sum);
+		printf("Столбец %d - произведение положительных =  %2.1f\n", r + 1, sum);
 	}
 }
 
