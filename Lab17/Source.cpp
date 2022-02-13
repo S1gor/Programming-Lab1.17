@@ -52,7 +52,7 @@ void fillArrRandomly(float mas[MAX][MAX], int rows, int cols)
 	srand(time(0));
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
-			mas[i][j] = rand() % 10000 / 100.;
+			mas[i][j] = (rand() % 2001 - 1000.0) / 10;
 }
 
 void fillArrFormula(float mas[MAX][MAX], int rows, int cols)							// ÑÒÐÀÍÍÎ
