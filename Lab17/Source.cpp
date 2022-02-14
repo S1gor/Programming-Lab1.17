@@ -59,14 +59,12 @@ void fillArrFormula(float mas[MAX][MAX], int rows, int cols)
 {
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
-		{
 			if (i < j)
 				mas[i][j] = cos(i * j);
-			if (i == j)
+			else if (i == j)
 				mas[i][j] = log(i);
-			if (i > j)
+			else
 				mas[i][j] = sin(i - j);
-		}
 }
 
 void fillArrFromFile(float mas[MAX][MAX], int& rows, int& cols,const char filename[])
@@ -96,7 +94,7 @@ void fillArrFromBinFile(float mas[MAX][MAX], int& rows, int& cols, const char fi
 	fread(&cols, sizeof(int), 1, f);
 
 	for (int i = 0; i < rows; i++)
-		fread(&mas[i], sizeof(float), cols, f);
+		fread(mas[i], sizeof(float), cols, f);
 	fclose(f);
 }
 
@@ -139,7 +137,7 @@ void writeArrToBinFile(float mas[MAX][MAX], int rows, int cols, const char filen
 	fwrite(&cols, sizeof(int), 1, f);
 	
 	for (int i = 0; i < rows; i++)
-		fwrite(&mas[i], sizeof(float), cols, f);
+		fwrite(mas[i], sizeof(float), cols, f);
 	fclose(f);
 }
 
