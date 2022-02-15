@@ -49,7 +49,6 @@ void fillArrManually(float mas[MAX][MAX], int rows, int cols)
 
 void fillArrRandomly(float mas[MAX][MAX], int rows, int cols)
 {
-	srand(time(0));
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
 			mas[i][j] = (rand() % 2001 - 1000.0) / 10;
@@ -76,11 +75,9 @@ void fillArrFromFile(float mas[MAX][MAX], int& rows, int& cols,const char filena
 	fscanf_s(f, "%d %d\n", &rows, &cols);
 
 	for (int i = 0; i < rows; i++)
-	{
 		for (int j = 0; j < cols; j++)
 			fscanf_s(f, "%f ", &mas[i][j]);
-		fscanf_s(f, "\n");
-	}
+
 	fclose(f);
 }
 
@@ -160,6 +157,8 @@ void arithmetic(float mas[MAX][MAX], int rows, int cols)
 int main()
 {
 	system("chcp 1251");
+
+	srand(time(0));
 
 	float mas[MAX][MAX];
 	int cols, rows;
